@@ -62,7 +62,7 @@ const Upload = () => {
       uploadData.append('region', formData.region);
       uploadData.append('scanImage', selectedFile);
 
-      await axios.post('http://localhost:5000/api/scans/upload', uploadData, {
+      await axios.post('https://oralvis-healthcare.onrender.com/api/scans/upload', uploadData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
