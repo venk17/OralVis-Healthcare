@@ -12,10 +12,16 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
+const allowedOrigins = [
+  'http://localhost:5173', // local frontend (Vite)
+  'http://localhost:3000', // local frontend (React)
+  'https://oral-vis-healthcare.vercel.app',  // deployed frontend
+  'https://oral-vis-healthcare-jrmd.vercel.app'  // another deployed frontend
+];
+
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:3000,https://oral-vis-healthcare.vercel.app/',
-    "https://oral-vis-healthcare-jrmd.vercel.app/"
-  ],
+  origin: allowedOrigins,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
 app.use(express.json());
